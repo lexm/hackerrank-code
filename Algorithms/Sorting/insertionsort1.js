@@ -21,8 +21,8 @@ function processData(input) {
         idx = idx - 1;
         printArray(arr);
     }
-    console.log('size:', size);
-    console.log('arr: ', arr);
+    arr[idx] = newNum;
+    printArray(arr);
 }
 
 process.stdin.resume();
