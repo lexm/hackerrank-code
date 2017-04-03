@@ -8,9 +8,6 @@ var Queue = function() {
     while(this.queue.length - 1 > 0) {
       tempStack.push(this.queue.pop());
     }
-    if(this.queue.length !== 1) {
-      console.error('sumting\'s rong heer!');
-    }
     var result = this.queue.pop();
     while(tempStack.length) {
       this.queue.push(tempStack.pop());
