@@ -35,7 +35,7 @@ function main() {
         var swapCount = 0;
         for(j = 0; j < n - 1; j++) {
             if(a[j] > a[j + 1]) {
-                swap(a[j], a[j + 1]);
+                swap(a, j, j + 1);
                 swapCount++;
             }
         }
