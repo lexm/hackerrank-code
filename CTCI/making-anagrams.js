@@ -36,6 +36,6 @@ function main() {
     });
     var result = resultArray.reduce(function(acc, cur) {
         return acc + Math.abs(cur);
-    });
+    }, 0);
     console.log(result);
 }
