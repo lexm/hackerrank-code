@@ -1,21 +1,25 @@
 var Queue = function() {
-    this.queue = [];
-    this.enqueue = function(newItem) {
-        var tempStack = [];
-        while(this.queue.length) {
-            tempStack.push(this.queue.pop());
-        }
-        tempStack.push(newItem);
-        while(tempStack.length) {
-            this.queue.push(tempStack.pop());
-        }
+  this.queue = [];
+  this.enqueue = function(newItem) {
+    this.queue.push(newItem);
+  }
+  this.dequeue = function() {
+    var tempStack = [];
+    while(this.queue.length - 1 > 0) {
+      tempStack.push(this.queue.pop());
     }
-    this.dequeue = function() {
-        return this.queue.pop()
+    if(this.queue.length !== 1) {
+      console.error('sumting\'s rong heer!');
     }
-    this.printHead = function() {
-        console.log(this.queue.slice(-1)[0]);
+    var result = this.queue.pop();
+    while(tempStack.length) {
+      this.queue.push(tempStack.pop());
     }
+    return result;
+  }
+  this.printHead = function() {
+      console.log(this.queue[0]);
+  }
 }
 
 function processData(input) {
