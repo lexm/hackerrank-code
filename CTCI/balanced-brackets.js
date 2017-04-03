@@ -31,17 +31,25 @@ function isBalanced(expression) {
                 stack.push(expression[i]);
                 break;
             case '}':
+                if(lastItem === '{') {
+                    stack.pop();
+                    break;
+                }
             case ')':
+                if(lastItem === '(') {
+                    stack.pop();
+                    break;
+                }
             case ']':
-                if(expression[i] === lastItem) {
+                if(lastItem === '[') {
                     stack.pop();
                     break;
                 }
             default:
                 return false;
         }
-        return true;
     }
+    return true;
 }
 
 
