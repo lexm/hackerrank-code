@@ -14,7 +14,7 @@ var Queue = function() {
         return this.queue.pop()
     }
     this.printHead = function() {
-        console.log(this.queue.slice(-1, 1)[0]);
+        console.log(this.queue.slice(-1)[0]);
     }
 }
 
