@@ -20,6 +20,12 @@ function readLine() {
 
 /////////////// ignore above this line ////////////////////
 
+function swap(array, idx1, idx2) {
+  var temp = array[idx1];
+  array[idx1] = array[idx2];
+  array[idx2] = temp;
+}
+
 function main() {
     var n = parseInt(readLine());
     a = readLine().split(' ');
