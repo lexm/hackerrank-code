@@ -20,9 +20,16 @@ function readLine() {
 
 /////////////// ignore above this line ////////////////////
 
-function Node() {
+var Node = function() {
   this.edgeList = [];
   this.visited = false;
+}
+
+var NodeArray = function(num) {
+  this.array = [];
+  for(b0 = 0; b0 < num; b0++) {
+    this.array.push(new Node());
+  }
 }
 
 function dfs(array, idx) {
