@@ -55,6 +55,9 @@ function main() {
     var y = parseInt(n_temp[3]);
     if(x <= y) {
       console.log(n * x);
+      for(var a1 = 0; a1 < m; a1++) {
+        readLine();
+      }
     } else {
       var nodeArray = [];
       for(var citNum = 0; citNum < n; citNum++) {
@@ -64,6 +67,7 @@ function main() {
         var city_1_temp = readLine().split(' ');
         var city_1 = parseInt(city_1_temp[0]);
         var city_2 = parseInt(city_1_temp[1]);
+        // console.log(city_1, city_2, a0, a1, n, m);
         nodeArray[city_1 - 1].edgeList.push(city_2);
         nodeArray[city_2 - 1].edgeList.push(city_1);
       }
@@ -76,6 +80,5 @@ function main() {
         curNode = lastNotVisited(nodeArray);
       }
     }
-
   }
 }
