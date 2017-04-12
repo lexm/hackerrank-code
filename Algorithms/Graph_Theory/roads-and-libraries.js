@@ -109,16 +109,10 @@ function main() {
       var cost = 0;
       // console.log(nodeArray.array);
       while(nodeArray.visitedPointer < n) {
-        // var roads = dfs(nodeArray, curNode) - 1;
-        // console.log(nodeArray.array.length, nodeArray.visitedPointer);
         var roads = nodeArray.dfs(nodeArray.visitedPointer) - 1;
         cost += x + (roads * y);
         console.log(cost, roads, x, y);
-        // console.log(nodeArray.visitedPointer);
-        // curNode = lastNotVisited(nodeArray);
-        // console.log('before: ', nodeArray.visitedPointer);
         nodeArray.advancePointer();
-        // console.log('after: ', nodeArray.visitedPointer);
       }
     }
   }
