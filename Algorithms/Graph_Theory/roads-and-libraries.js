@@ -62,26 +62,6 @@ var NodeArray = function(num) {
   }
 }
 
-// function dfs(array, idx) {
-//   array[idx].visited = true
-//   var count = 1;
-//   array[idx].edgeList.forEach(function(cur) {
-//     if(!array[cur - 1].visited) {
-//       count += dfs(array, cur - 1);
-//     }
-//   });
-//   return count;
-// }
-//
-// function lastNotVisited(array) {
-//   for(i = 0; i < array.length; i++) {
-//     if(!array[i].visited) {
-//       return i;
-//     }
-//   }
-//   return array.length;
-// }
-
 function main() {
   var q = parseInt(readLine());
   for(var a0 = 0; a0 < q; a0++){
