@@ -86,9 +86,9 @@ function main() {
       while(nodeArray.visitedPointer < n) {
         var roads = nodeArray.dfs(nodeArray.visitedPointer) - 1;
         cost += x + (roads * y);
-        console.log(cost);
         nodeArray.advancePointer();
       }
+      console.log(cost);
     }
   }
 }
