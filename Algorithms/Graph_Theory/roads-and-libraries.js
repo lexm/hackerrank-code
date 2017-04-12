@@ -97,10 +97,6 @@ function main() {
       }
     } else {
       var nodeArray = new NodeArray(n);
-      // console.log(nodeArray);
-      // for(var citNum = 0; citNum < n; citNum++) {
-      //   nodeArray.push(new Node());
-      // }
       for(var a1 = 0; a1 < m; a1++){
         var city_1_temp = readLine().split(' ');
         var city_1 = parseInt(city_1_temp[0]);
@@ -110,15 +106,15 @@ function main() {
         // nodeArray[city_2 - 1].edgeList.push(city_1);
         nodeArray.addEdge(city_1, city_2);
       }
-      // var curNode = 0;
       var cost = 0;
+      // console.log(nodeArray.array);
       while(nodeArray.visitedPointer < n) {
         // var roads = dfs(nodeArray, curNode) - 1;
         // console.log(nodeArray.array.length, nodeArray.visitedPointer);
-        var roads = nodeArray.dfs(nodeArray.visitedPointer);
+        var roads = nodeArray.dfs(nodeArray.visitedPointer) - 1;
         cost += x + (roads * y);
-        console.log(cost);
-        console.log(nodeArray.visitedPointer);
+        console.log(cost, roads, x, y);
+        // console.log(nodeArray.visitedPointer);
         // curNode = lastNotVisited(nodeArray);
         // console.log('before: ', nodeArray.visitedPointer);
         nodeArray.advancePointer();
