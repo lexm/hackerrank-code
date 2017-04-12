@@ -101,13 +101,9 @@ function main() {
         var city_1_temp = readLine().split(' ');
         var city_1 = parseInt(city_1_temp[0]);
         var city_2 = parseInt(city_1_temp[1]);
-        // console.log(city_1, city_2, a0, a1, n, m);
-        // nodeArray[city_1 - 1].edgeList.push(city_2);
-        // nodeArray[city_2 - 1].edgeList.push(city_1);
         nodeArray.addEdge(city_1, city_2);
       }
       var cost = 0;
-      // console.log(nodeArray.array);
       while(nodeArray.visitedPointer < n) {
         var roads = nodeArray.dfs(nodeArray.visitedPointer) - 1;
         cost += x + (roads * y);
