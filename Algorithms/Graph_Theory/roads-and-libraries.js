@@ -23,34 +23,62 @@ function readLine() {
 var Node = function() {
   this.edgeList = [];
   this.visited = false;
+  this.addToEdgeList = function(cit) {
+    this.edgeList.push(cit)
+  }
 }
 
 var NodeArray = function(num) {
   this.array = [];
+  this.visitedPointer = 0;
   for(b0 = 0; b0 < num; b0++) {
     this.array.push(new Node());
   }
-}
 
-function dfs(array, idx) {
-  array[idx].visited = true
-  var count = 1;
-  array[idx].edgeList.forEach(function(cur) {
-    if(!array[cur - 1].visited) {
-      count += dfs(array, cur - 1);
-    }
-  });
-  return count;
-}
-
-function lastNotVisited(array) {
-  for(i = 0; i < array.length; i++) {
-    if(!array[i].visited) {
-      return i;
-    }
+  this.addEdge = function(cit1, cit2) {
+    this.array[cit1 - 1].addToEdgeList(cit2);
+    this.array[cit2 - 1].addToEdgeList(cit1);
   }
-  return array.length;
+
+  this.advancePointer = function() {
+    var b1 = this.visitedPointer;
+    while(!this.array[b1].visited && b1 < this.array.length) {
+      b1++
+    }
+    this.visitedPointer = b1;
+  }
+
+  this.dfs = function(idx) {
+    this[idx].visited = true;
+    var count = 1;
+    this[idx].edgeList.forEach(function(cur) {
+      if(!this[cur - 1].visited) {
+        count += this.dfs(cur - 1);
+      }
+    });
+    return count;
+  }
 }
+
+// function dfs(array, idx) {
+//   array[idx].visited = true
+//   var count = 1;
+//   array[idx].edgeList.forEach(function(cur) {
+//     if(!array[cur - 1].visited) {
+//       count += dfs(array, cur - 1);
+//     }
+//   });
+//   return count;
+// }
+//
+// function lastNotVisited(array) {
+//   for(i = 0; i < array.length; i++) {
+//     if(!array[i].visited) {
+//       return i;
+//     }
+//   }
+//   return array.length;
+// }
 
 function main() {
   var q = parseInt(readLine());
@@ -66,25 +94,28 @@ function main() {
         readLine();
       }
     } else {
-      var nodeArray = [];
-      for(var citNum = 0; citNum < n; citNum++) {
-        nodeArray.push(new Node());
-      }
+      var nodeArray = new NodeArray(n);
+      // for(var citNum = 0; citNum < n; citNum++) {
+      //   nodeArray.push(new Node());
+      // }
       for(var a1 = 0; a1 < m; a1++){
         var city_1_temp = readLine().split(' ');
         var city_1 = parseInt(city_1_temp[0]);
         var city_2 = parseInt(city_1_temp[1]);
         // console.log(city_1, city_2, a0, a1, n, m);
-        nodeArray[city_1 - 1].edgeList.push(city_2);
-        nodeArray[city_2 - 1].edgeList.push(city_1);
+        // nodeArray[city_1 - 1].edgeList.push(city_2);
+        // nodeArray[city_2 - 1].edgeList.push(city_1);
+        nodeArray.addEdge(city1, city2);
       }
-      var curNode = 0;
-      var cost = 0
-      while(curNode < n) {
-        var roads = dfs(nodeArray, curNode) - 1;
+      // var curNode = 0;
+      var cost = 0;
+      while(nodeArray.visitedPointer < n) {
+        // var roads = dfs(nodeArray, curNode) - 1;
+        var roads = nodeArray.dfs(nodeArray.visitedPointer);
         cost += x + (roads * y);
         console.log(cost);
-        curNode = lastNotVisited(nodeArray);
+        // curNode = lastNotVisited(nodeArray);
+        nodeArray.advancePointer();
       }
     }
   }
