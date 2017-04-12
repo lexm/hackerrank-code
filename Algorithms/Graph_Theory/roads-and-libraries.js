@@ -43,7 +43,6 @@ var NodeArray = function(num) {
   this.advancePointer = function() {
     var b1 = this.visitedPointer;
     while(b1 < this.array.length && this.array[b1].visited) {
-      // console.log('b1: ', b1, this.array[b1].visited, this.array.length);
       b1++;
     }
     this.visitedPointer = b1;
@@ -87,7 +86,7 @@ function main() {
       while(nodeArray.visitedPointer < n) {
         var roads = nodeArray.dfs(nodeArray.visitedPointer) - 1;
         cost += x + (roads * y);
-        console.log(cost, roads, x, y);
+        console.log(cost);
         nodeArray.advancePointer();
       }
     }
