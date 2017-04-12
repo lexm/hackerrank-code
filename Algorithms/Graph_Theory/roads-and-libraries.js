@@ -42,18 +42,20 @@ var NodeArray = function(num) {
 
   this.advancePointer = function() {
     var b1 = this.visitedPointer;
-    while(!this.array[b1].visited && b1 < this.array.length) {
-      b1++
+    while(b1 < this.array.length && this.array[b1].visited) {
+      // console.log('b1: ', b1, this.array[b1].visited, this.array.length);
+      b1++;
     }
     this.visitedPointer = b1;
   }
 
   this.dfs = function(idx) {
-    this[idx].visited = true;
+    this.array[idx].visited = true;
+    storeThis = this;
     var count = 1;
-    this[idx].edgeList.forEach(function(cur) {
-      if(!this[cur - 1].visited) {
-        count += this.dfs(cur - 1);
+    this.array[idx].edgeList.forEach(function(cur, idx, arr) {
+      if(!storeThis.array[cur - 1].visited) {
+        count += storeThis.dfs(cur - 1);
       }
     });
     return count;
@@ -95,6 +97,7 @@ function main() {
       }
     } else {
       var nodeArray = new NodeArray(n);
+      // console.log(nodeArray);
       // for(var citNum = 0; citNum < n; citNum++) {
       //   nodeArray.push(new Node());
       // }
@@ -105,17 +108,21 @@ function main() {
         // console.log(city_1, city_2, a0, a1, n, m);
         // nodeArray[city_1 - 1].edgeList.push(city_2);
         // nodeArray[city_2 - 1].edgeList.push(city_1);
-        nodeArray.addEdge(city1, city2);
+        nodeArray.addEdge(city_1, city_2);
       }
       // var curNode = 0;
       var cost = 0;
       while(nodeArray.visitedPointer < n) {
         // var roads = dfs(nodeArray, curNode) - 1;
+        // console.log(nodeArray.array.length, nodeArray.visitedPointer);
         var roads = nodeArray.dfs(nodeArray.visitedPointer);
         cost += x + (roads * y);
         console.log(cost);
+        console.log(nodeArray.visitedPointer);
         // curNode = lastNotVisited(nodeArray);
+        // console.log('before: ', nodeArray.visitedPointer);
         nodeArray.advancePointer();
+        // console.log('after: ', nodeArray.visitedPointer);
       }
     }
   }
