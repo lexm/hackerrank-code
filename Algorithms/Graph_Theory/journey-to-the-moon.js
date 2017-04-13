@@ -60,7 +60,23 @@ function processData(input) {
         [a, b] = inputArray.readLine().split(' ').map(Number);
         nodeArray.addEdge(a, b);
     }
-    console.log(nodeArray);
+    var nations = [];
+    while(nodeArray.visitedPointer < n) {
+      nations.push(nodeArray.dfs(nodeArray.visitedPointer));
+      nodeArray.advancePointer();
+    }
+    console.log(nations);
+    var result = 0;
+    while(nations.length) {
+        var lastPop = nations.pop();
+        console.log(nations, lastPop);
+        result += nations.reduce(function(acc, cur) {
+            console.log('in reduce: ', acc, cur);
+            return acc + cur * lastPop;
+        }, 0);
+
+    }
+    console.log(result);
 }
 
 process.stdin.resume();
