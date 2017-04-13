@@ -65,13 +65,10 @@ function processData(input) {
       nations.push(nodeArray.dfs(nodeArray.visitedPointer));
       nodeArray.advancePointer();
     }
-    console.log(nations);
     var result = 0;
     while(nations.length) {
         var lastPop = nations.pop();
-        console.log(nations, lastPop);
         result += nations.reduce(function(acc, cur) {
-            console.log('in reduce: ', acc, cur);
             return acc + cur * lastPop;
         }, 0);
 
