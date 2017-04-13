@@ -18,3 +18,15 @@ var NodeArray = function(length) {
     this.array[nodeNum2].addToEdgeList(nodeNum1);
   }
 }
+
+var InputArray(input) {
+  var currentLine = 0;
+  var lines = input.split('\n');
+  this.readLine = function() {
+    if(currentLine < lines.length) {
+      return lines[currentLine++];
+    } else {
+      return null;
+    }
+  }
+}
