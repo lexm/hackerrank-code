@@ -19,7 +19,7 @@ var NodeArray = function(length) {
   }
 }
 
-var InputArray(input) {
+var InputArray = function(input) {
   var currentLine = 0;
   var lines = input.split('\n');
   this.readLine = function() {
@@ -30,3 +30,22 @@ var InputArray(input) {
     }
   }
 }
+
+function processData(input) {
+    var inputArray = new InputArray(input);
+    var n, p;
+    [n, p] = inputArray.readLine().split(' ').map(Number);
+    console.log(n, p);
+    //Enter your code here
+}
+
+process.stdin.resume();
+process.stdin.setEncoding("ascii");
+_input = "";
+process.stdin.on("data", function (input) {
+    _input += input;
+});
+
+process.stdin.on("end", function () {
+   processData(_input);
+});
