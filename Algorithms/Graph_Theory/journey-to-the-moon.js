@@ -71,29 +71,15 @@ function processData(input) {
         [a, b] = inputArray.readLine().split(' ').map(Number);
         nodeArray.addEdge(a, b);
     }
-    // var nations = [];
-    // var popStore = new PopulationStore();
     var sum = 0;
     var result = 0;
     while(nodeArray.visitedPointer < n) {
-      // popStore.addPop(nodeArray.dfs(nodeArray.visitedPointer));
       var popSize = nodeArray.dfs(nodeArray.visitedPointer);
       result += sum * popSize;
       sum += popSize;
-      // nations.push(nodeArray.dfs(nodeArray.visitedPointer));
       nodeArray.advancePointer();
     }
     console.log(result);
-    // var result = 0;
-    // while(nations.length) {
-    //     var lastPop = nations.pop();
-    //     result += nations.reduce(function(acc, cur) {
-    //         return acc + cur * lastPop;
-    //     }, 0);
-
-    // }
-    // console.log(result);
-    // console.log(popStore);
 }
 
 process.stdin.resume();
