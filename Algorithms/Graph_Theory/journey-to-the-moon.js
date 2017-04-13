@@ -51,6 +51,17 @@ var InputArray = function(input) {
   }
 }
 
+var PopulationStore = function() {
+  this.store = {}
+  this.addPop = function(population) {
+    if(this.store.hasOwnProperty(population)) {
+      this.store[population]++;
+    } else {
+      this.store[population] = 1;
+    }
+  }
+}
+
 function processData(input) {
     var inputArray = new InputArray(input);
     var n, p, a, b;
@@ -60,20 +71,23 @@ function processData(input) {
         [a, b] = inputArray.readLine().split(' ').map(Number);
         nodeArray.addEdge(a, b);
     }
-    var nations = [];
+    // var nations = [];
+    var popStore = new PopulationStore();
     while(nodeArray.visitedPointer < n) {
-      nations.push(nodeArray.dfs(nodeArray.visitedPointer));
+      popStore.addPop(nodeArray.dfs(nodeArray.visitedPointer));
+      // nations.push(nodeArray.dfs(nodeArray.visitedPointer));
       nodeArray.advancePointer();
     }
-    var result = 0;
-    while(nations.length) {
-        var lastPop = nations.pop();
-        result += nations.reduce(function(acc, cur) {
-            return acc + cur * lastPop;
-        }, 0);
+    // var result = 0;
+    // while(nations.length) {
+    //     var lastPop = nations.pop();
+    //     result += nations.reduce(function(acc, cur) {
+    //         return acc + cur * lastPop;
+    //     }, 0);
 
-    }
-    console.log(result);
+    // }
+    // console.log(result);
+    console.log(popStore);
 }
 
 process.stdin.resume();
