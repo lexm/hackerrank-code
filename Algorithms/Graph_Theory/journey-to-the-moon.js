@@ -17,6 +17,14 @@ var NodeArray = function(length) {
     this.array[nodeNum1].addToEdgeList(nodeNum2);
     this.array[nodeNum2].addToEdgeList(nodeNum1);
   }
+
+  this.advancePointer = function() {
+    var b1 = this.visitedPointer;
+    while(b1 < this.array.length && this.array[b1].visited) {
+      b1++;
+    }
+    this.visitedPointer = b1;
+  }
 }
 
 var InputArray = function(input) {
