@@ -25,6 +25,18 @@ var NodeArray = function(length) {
     }
     this.visitedPointer = b1;
   }
+
+  this.dfs = function(index) {
+    this.array[index].visited = true;
+    var storeThis = this;
+    var count = 1;
+    this.array[index].edgeList.forEach(function(cur) {
+      if(!storeThis.array[cur].visited) {
+        count += storeThis.dfs(cur);
+      }
+    });
+    return count;
+  }
 }
 
 var InputArray = function(input) {
