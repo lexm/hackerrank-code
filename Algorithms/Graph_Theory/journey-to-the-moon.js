@@ -33,10 +33,13 @@ var InputArray = function(input) {
 
 function processData(input) {
     var inputArray = new InputArray(input);
-    var n, p;
+    var n, p, a, b;
     [n, p] = inputArray.readLine().split(' ').map(Number);
     console.log(n, p);
-    //Enter your code here
+    for(a0 = 0; a0 < p; a0++) {
+        [a, b] = inputArray.readLine().split(' ').map(Number);
+        console.log(a, b);
+    }
 }
 
 process.stdin.resume();
