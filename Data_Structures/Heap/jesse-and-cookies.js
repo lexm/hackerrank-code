@@ -52,7 +52,12 @@ function processData(input) {
     var n = parseInt(input[0][0]);
     var k = parseInt(input[0][1]);
     var a = input[1].map(Number);
-    console.log(n, k, a);
+    var heap = new Heap();
+    while(a.length) {
+      var element = a.pop();
+      heap.addVal(element);
+    }
+    console.log(heap.heapData);
 }
 
 process.stdin.resume();
