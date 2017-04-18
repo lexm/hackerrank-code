@@ -45,6 +45,23 @@ Heap.prototype.addVal = function(value) {
   this.moveUp(this.heapData.length - 1);
 }
 
+Heap.prototype.pop = function() {
+  var result = this.heapData[0];
+  var lastVal = this.heapData.pop();
+  if(this.heapData.length) {
+    this.heapData[0] = lastVal;
+    this.moveDown(0);
+  }
+}
+
+Heap.prototype.minimum = function() {
+  return this.heapData[0];
+}
+
+Heap.prototype.length = function() {
+  return this.heapData.length;
+}
+
 function processData(input) {
     input = input.split('\n').map(function(cur) {
         return cur.split(' ');
@@ -57,7 +74,14 @@ function processData(input) {
       var element = a.pop();
       heap.addVal(element);
     }
-    console.log(heap.heapData);
+    var result = 0;
+    while(heap.length() > 1 && heap.minimum() < k) {
+      result++;
+      var least1 = heap.pop();
+      var least2 = heap.pop();
+      heap.addVal(least1 + 2 * least2);
+    }
+    console.log(result, heap.heapData);
 }
 
 process.stdin.resume();
