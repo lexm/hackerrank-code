@@ -7,8 +7,8 @@ Heap.prototype.moveUp = function(idx) {
   while(idx > 0) {
     var parentIdx = Math.floor((idx + 1) / 2) - 1;
     var parent = this.heapData[parentIdx];
-    if(ele >= parent) break;
-    this.heapData[parentIdx] = ele;
+    if(element >= parent) break;
+    this.heapData[parentIdx] = element;
     this.heapData[idx] = parent;
     idx = parentIdx;
   }
@@ -16,26 +16,26 @@ Heap.prototype.moveUp = function(idx) {
 
 Heap.prototype.moveDown = function(idx) {
   var length = this.heapData.length;
-  var ele = this.heapData[idx];
+  var element = this.heapData[idx];
   while(true) {
     child1Idx = (idx + 1) * 2;
     child2Idx = child1Idx - 1;
     var newPosition = null;
     if(child1Idx < length) {
       var child1 = this.heapData[child1Idx];
-      if(child1 < ele) {
+      if(child1 < element) {
         newPosition = child1Idx;
       }
     }
     if(child2Idx < length) {
       var child2 = this.heapData[child2Idx];
-      if(child2 < (newPosition == null ? ele : child1)) {
+      if(child2 < (newPosition == null ? element : child1)) {
         newPosition = child2Idx;
       }
     }
     if(newPosition == null) break;
     this.heapData[idx] = this.heapData[newPosition];
-    this.heapData[newPosition] = ele;
+    this.heapData[newPosition] = element;
     idx = newPosition;
   }
 }
