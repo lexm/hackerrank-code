@@ -80,8 +80,8 @@ function processData(input) {
       var least1 = heap.pop();
       var least2 = heap.pop();
       heap.addVal(least1 + 2 * least2);
+      console.log(result, heap.heapData);
     }
-    console.log(result, heap.heapData);
 }
 
 process.stdin.resume();
