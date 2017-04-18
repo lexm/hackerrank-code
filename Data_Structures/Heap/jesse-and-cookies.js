@@ -52,6 +52,7 @@ Heap.prototype.pop = function() {
     this.heapData[0] = lastVal;
     this.moveDown(0);
   }
+  return result;
 }
 
 Heap.prototype.minimum = function() {
@@ -80,8 +81,11 @@ function processData(input) {
       var least1 = heap.pop();
       var least2 = heap.pop();
       heap.addVal(least1 + 2 * least2);
-      console.log(result, heap.heapData);
     }
+    if(heap.length() === 1 && heap.minimum() < k) {
+        result = -1
+    }
+    console.log(result);
 }
 
 process.stdin.resume();
