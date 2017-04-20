@@ -1,7 +1,7 @@
 function printArray(arr) {
     var len = arr.length;
     var out = '';
-    for(i = 0; i < len; i++) {
+    for(var i = 0; i < len; i++) {
         out += arr[i];
         if(i < len - 1) {
             out += ' ';
@@ -10,16 +10,15 @@ function printArray(arr) {
     console.log(out);
 }
 
-
-
 function processData(input) {
   input = input.split('\n');
   var size = parseInt(input[0]);
   var ar = input[1].split(' ').map(function(cur) {return parseInt(cur)});
-  for(i = 1; i < ar.length; i++) {
-    var idx = i;
+  var len = ar.length
+  for(var j = 2; j < len; j++) {
+    var idx = j;
     var newNum = ar[idx];
-    while(idx && ar[idx - 1] > newNum) {
+    while(idx && (ar[idx - 1] > newNum)) {
       ar[idx] = ar[idx - 1];
       idx = idx - 1;
     }
