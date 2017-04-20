@@ -25,7 +25,6 @@ function processData(input) {
     ar[idx] = newNum;
     printArray(ar);
   }
-    //Enter your code here
 }
 
 process.stdin.resume();
