@@ -15,7 +15,7 @@ function processData(input) {
   var size = parseInt(input[0]);
   var ar = input[1].split(' ').map(function(cur) {return parseInt(cur)});
   var len = ar.length
-  for(var j = 2; j < len; j++) {
+  for(var j = 1; j < len; j++) {
     var idx = j;
     var newNum = ar[idx];
     while(idx && (ar[idx - 1] > newNum)) {
