@@ -15,7 +15,7 @@ function processData(input) {
             result += idx + ' ';
         }
     })
-    console.log(result);
+    console.log(result.slice(0, -1));
 }
 process.stdin.resume();
 process.stdin.setEncoding("ascii");
