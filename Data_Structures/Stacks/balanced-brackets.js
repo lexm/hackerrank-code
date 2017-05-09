@@ -47,6 +47,6 @@ function main() {
                 }
             }
         }
-        balanced ? console.log('YES') : console.log('NO');
+        (balanced && !stack.length) ? console.log('YES') : console.log('NO');
     }
 }
