@@ -35,8 +35,7 @@ function main() {
     var total1 = 0;
     while(h1.length) {
         total1 += h1.pop();
-        if(valMap.hasOwnProperty(total1)) valMap[total1]++;
-        else valMap[total1] = 1;
+        valMap[total1] = 1;
     }
     var total2 = 0;
     while(h2.length) {
