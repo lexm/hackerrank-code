@@ -1,1 +1,2 @@
-undefined
+SELECT * FROM CITY
+WHERE COUNTRYCODE = 'JPN'
