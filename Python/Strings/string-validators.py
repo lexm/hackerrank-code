@@ -5,7 +5,7 @@ if __name__ == '__main__':
     hasdigits = False
     haslower = False
     hasupper = False
-    for ch in s.split():
+    for ch in list(s):
         if(ch.isalnum()):
             hasalnum = True
             if(ch.isalpha()):
