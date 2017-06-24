@@ -5,7 +5,7 @@ def merge_the_tools(string, k):
     arr = []
     for i in range(0, length):
         seg += string[i]
-        if(((i + 1)% k == 0) and i > 0):
+        if(((i + 1)% k == 0) and (i > 0 or k == 1)):
             arr.append(seg)
             seg = ''
     for seg in arr:
