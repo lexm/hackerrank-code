@@ -29,13 +29,16 @@ function main() {
     magazine.forEach(function(cur) {
         if(!magObj.hasOwnProperty(cur)) {
             magObj[cur] = 1;
+        } else {
+            magObj[cur]++;
         }
     })
     ransom = readLine().split(' ');
     var resultBool = ransom.reduce(function(acc, cur) {
-        if(!magObj.hasOwnProperty(cur)) {
+        if(!magObj.hasOwnProperty(cur) || magObj[cur] <= 0) {
             return false;
         } else {
+            magObj[cur]--;
             return cur;
         }
     }, true)
