@@ -5,8 +5,9 @@ array = list(map(int, input().split(' ')))
 A = set(list(map(int, input().split(' '))))
 B = set(list(map(int, input().split(' '))))
 happiness = 0
-for a in A:
-    happiness += array.count(a)
-for b in B:
-    happiness -= array.count(b)
+for member in array:
+    if(member in A):
+        happiness += 1
+    if(member in B):
+        happiness -= 1
 print(happiness)
