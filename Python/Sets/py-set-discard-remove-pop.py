@@ -9,7 +9,4 @@ for _ in range(0, N):
         s.remove(int(line[1]))
     elif(line[0] == 'discard'):
         s.discard(int(line[1]))
-sum = 0
-for x in list(s):
-    sum += x
-print(sum)
+print(sum(s))
