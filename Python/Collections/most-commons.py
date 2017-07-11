@@ -1,8 +1,7 @@
 from collections import Counter
 from operator import itemgetter
 S = input()
-mc = list(Counter(S).most_common(3))
-smc1 = sorted(mc, key=itemgetter(0))
-smc2 = sorted(smc1, key=itemgetter(1), reverse=True)
-for pair in smc2:
-    print(' '.join(map(str, pair)))
+mc = list(Counter(S).most_common())
+smc = sorted(mc, key=lambda x: (-x[1], x[0]))
+for idx in range(0, 3):
+    print(' '.join(map(str, smc[idx])))
