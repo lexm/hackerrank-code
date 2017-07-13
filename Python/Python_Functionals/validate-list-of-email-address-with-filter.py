@@ -2,6 +2,8 @@ def fun(s):
     arr1 = s.split('@')
     if(len(arr1) != 2):
         return False
+    if(len(arr1[0]) == 0):
+        return False
     user_arr = list(arr1[0])
     fil_user = list(filter(lambda ch: (ch.isalnum() or ch == '_' or ch == '-') == False, user_arr))
     if (len(fil_user) > 0):
