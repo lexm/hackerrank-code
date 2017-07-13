@@ -1,6 +1,4 @@
 def pal(number):
-    if number < 0:
-        return False
     numstr = str(number)
     if numstr == numstr[::-1]:
         return True
@@ -8,4 +6,4 @@ def pal(number):
 
 N = int(input())
 nums = list(map(int, input().split()))
-print(any(list(map(pal, nums))))
+print(all(list(map(lambda x: x >= 0, nums))) and any(list(map(pal, nums))))
