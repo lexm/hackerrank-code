@@ -10,6 +10,8 @@ class MyParser(HTMLParser):
         print("End   :", tag)
     def handle_startendtag(self, tag, attrs):
         print("Empty :", tag)
+        for attr in attrs:
+            print("-> " + attr[0] + " > " + str(attr[1]))
         
 compat1 = r"(.*)(<!--)(.*)"
 compat2 = r"(.*)(-->)(.*)"
@@ -23,7 +25,6 @@ for _ in range(0,N):
     if not comm:
         srch1 = re.search(compat1, line)
         if srch1:
-            print(srch1.group(1), srch1.group(2), srch1.group(3))
             parser.feed(srch1.group(1))
             comm = True
             line = srch1.group(3)
@@ -32,7 +33,6 @@ for _ in range(0,N):
     if comm:
         srch2 = re.search(compat2, line)
         if srch2:
-            print(srch2.group(1), srch2.group(2), srch2.group(3))
             parser.feed(srch2.group(3))
             comm = False
 
