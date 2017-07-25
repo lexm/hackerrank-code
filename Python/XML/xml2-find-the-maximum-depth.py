@@ -4,6 +4,6 @@ def depth(elem, level):
     level += 1
     if(maxdepth < level):
         maxdepth = level
-    for i in range(0, len(elem)):
-        depth(elem[i], level)
+    for next in elem:
+        depth(next, level)
 
